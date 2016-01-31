@@ -1,0 +1,11 @@
+
+from django.contrib import admin
+from django.conf.urls import url, include
+from .views import UserCreate, UserView, login_view
+
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/create_user', UserCreate.as_view(), name='create-user'),
+    url(r'^api/users/(?P<pk>[-\w]+)/$', UserView.as_view(), name='view-user'),
+    url(r'^api/login', login_view, name='login')
+]
